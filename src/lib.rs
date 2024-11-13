@@ -18,6 +18,14 @@ pub struct NvtxSubscriber {
     spans: Mutex<Vec<Span>>,
 }
 
+impl NvtxSubscriber {
+    pub fn new() -> Self {
+        Self {
+            spans: Mutex::new(Vec::new()),
+        }
+    }
+}
+
 impl Subscriber for NvtxSubscriber {
     fn enabled(&self, _metadata: &Metadata<'_>) -> bool {
         // Enable all spans and events
